@@ -43,29 +43,38 @@ function Header() {
             flexGrow: 1,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Button 
-              style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
-              startIcon={<HomeIcon fontSize="small" />} 
-              onClick={handleClick}
-            >
-              Memvy Bank
-            </Button>
-            <Button 
-              style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
-              startIcon={<DraftsIcon fontSize="small" />} 
-              onClick={handleClick}
-            >
-              Drafts
-            </Button>
-            <Button 
-              style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
-              startIcon={<GroupIcon fontSize="small" />} 
-              onClick={handleClick}
-            >
-              Collaboration
-            </Button>
-          </div>
+         <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Button 
+            style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
+            startIcon={
+              <img src="/assets/Union.png" alt="Home Icon" style={{ width: '48.63px', height: '24px' }} />
+            }
+            onClick={handleClick}
+          >
+            Memvy Bank
+          </Button>
+          
+          <Button 
+            style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
+            startIcon={
+              <img src="/assets/Shape.png" alt="Drafts Icon" style={{ width: '16px', height: '16px' }} />
+            }
+            onClick={handleClick}
+          >
+            Drafts
+          </Button>
+          
+          <Button 
+            style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
+            startIcon={
+              <img src="/assets/Shape (1).png" alt="Collaboration Icon" style={{ width: '16px', height: '16px' }} />
+            }
+            onClick={handleClick}
+          >
+            Collaboration
+          </Button>
+        </div>
+
           
           {/* <Typography variant="h3" style={{ flexGrow: 1, textAlign: 'center' }}>
             Material UI APP
