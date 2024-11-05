@@ -167,31 +167,41 @@ function Main() {
     justifyContent: { xs: 'center', sm: 'space-between' },
     alignItems: 'center',
     padding: { xs: '10px 20px', sm: '20px 90px' }, // Smaller padding on mobile
-    backgroundColor: 'inherit',
+    //backgroundColor: 'inherit',
     gap: { xs: 2, sm: 0 }, // Add gap between elements on smaller screens
   }}
 >
   {/* Search Field on the Left */}
   <TextField
-    variant="outlined"
-    placeholder="Search..."
-    size="small"
-    sx={{
-      width: { xs: '100%', sm: '200px' }, // Full width on small screens
-      '& .MuiOutlinedInput-root': {
-        color: '#1A205A',
-        '& fieldset': {
-          borderColor: '#1A205A',
-        },
-        '&:hover fieldset': {
-          borderColor: '#1A205A',
-        },
-        '&.Mui-focused fieldset': {
-          borderColor: '#1A205A',
-        },
+  variant="outlined"
+  placeholder="Search..."
+  size="small"
+  sx={{
+    width: { xs: '100%', sm: '200px' }, // Full width on small screens
+    '& .MuiOutlinedInput-root': {
+      color: 'white', // Set input text color to white
+      borderRadius: '20px', // Rounded edges to make it look like a button
+      '& fieldset': {
+        borderColor: '#1A205A',
       },
-    }}
-  />
+      '&:hover fieldset': {
+        borderColor: '#1A205A',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#1A205A',
+      },
+    },
+    '& input': {
+      color: 'white', // Set placeholder text color to white
+      padding: '10px 20px', // Add padding for a button-like appearance
+    },
+    '& .MuiInputBase-input': {
+      backgroundColor: '#1A205A', // Optional: Set background color for better contrast
+      borderRadius: '20px', // Ensure input area is also rounded
+    },
+  }}
+/>
+
 
   {/* Centered Button Group */}
   <Box
@@ -221,34 +231,80 @@ function Main() {
 
   {/* View Field on the Right */}
   <Box
-    sx={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: 1,
-      marginTop: { xs: 2, sm: 0 }, // Add margin on smaller screens to create space
-      justifyContent: { xs: 'center', sm: 'initial' },
+  sx={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: 0, // Reduced gap for closer spacing
+    marginTop: { xs: 2, sm: 0 }, // Add margin on smaller screens to create space
+    justifyContent: { xs: 'center', sm: 'initial' },
+  }}
+>
+  <Button
+    size="small"
+    sx={{ 
+      textTransform: 'none', 
+      color: 'white', // Default color
+      '&:hover': {
+        color: 'white', // Change to white on hover
+      } 
     }}
   >
-    <Button
-      startIcon={<ViewListIcon />}
-      size="small"
-      sx={{ textTransform: 'none' }}
-    >
-      List View
-    </Button>
+    View
+  </Button>
 
-    <Button
-      startIcon={<ViewModuleIcon />}
-      size="small"
-      sx={{ textTransform: 'none' }}
-    >
-      Grid View
-    </Button>
+  <Button
+    startIcon={
+      <img 
+        src="/assets/waiting.png" 
+        alt="Waiting Icon" 
+        style={{ width: '13.5px', height: '18px', filter: 'brightness(0) saturate(100%) invert(54%) sepia(12%) saturate(1010%) hue-rotate(200deg) brightness(94%) contrast(91%)' }} // Adjust filter for default color
+      />
+    }
+    size="small"
+    sx={{ 
+      textTransform: 'none', 
+      color: 'secondary', // Default color
+      '&:hover': {
+        color: 'white', // Change to white on hover
+      } 
+    }}
+  >
+  </Button>
 
-    <IconButton aria-label="menu" sx={{ color: '#1976d2' }}>
-      <MenuIcon />
-    </IconButton>
-  </Box>
+  <Button
+    startIcon={
+      <img 
+        src="/assets/grid.png" 
+        alt="Grid View Icon" 
+        style={{ width: '18px', height: '18px', filter: 'brightness(0) saturate(100%) invert(54%) sepia(12%) saturate(1010%) hue-rotate(200deg) brightness(94%) contrast(91%)' }} // Adjust filter for default color
+      />
+    }
+    size="small"
+    sx={{ 
+      textTransform: 'none', 
+      color: 'secondary', // Default color
+      '&:hover': {
+        color: 'white', // Change to white on hover
+      } 
+    }}
+  >
+  </Button>
+
+  <IconButton aria-label="menu" sx={{ 
+    color: 'secondary', // Default color
+    '&:hover': {
+      color: 'white', // Change to white on hover
+    } 
+  }}>
+    <img 
+      src="/assets/three_dot.png" 
+      alt="Menu Icon" 
+      style={{ width: '16px', height: '20px', filter: 'brightness(0) saturate(100%) invert(54%) sepia(12%) saturate(1010%) hue-rotate(200deg) brightness(94%) contrast(91%)' }} // Adjust filter for default color
+    />
+  </IconButton>
+</Box>
+
+
 </Box>
 <Divider
   sx={{
@@ -364,7 +420,7 @@ function Main() {
       </Grid2>
     </Box> */}
      {/* <GridLayout /> */}
-     <GridLayout1 />
+     <GridLayout />
     </ThemeProvider>
   )
 }

@@ -32,7 +32,24 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* App.css */
+.ellipse-background {
+  position: relative;
+  overflow: hidden;
+  background-color: #04071E;
+  /* Fallback color */
+  background-image: url('../public/assets/Ellipse\ 7.png'), url('../public/assets/Ellipse\ 33.png');
+  background-repeat: no-repeat, no-repeat;
+  background-size: contain, contain;
+  /* Adjust size as necessary */
+  background-position: left top, right bottom;
+  /* Adjust positions as necessary */
+  min-height: 100vh;
+  /* Ensure it covers the full height */
 }
