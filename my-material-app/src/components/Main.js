@@ -133,11 +133,10 @@ function Main() {
       }}
     >
       <AvatarGroup max={4}>
-        <Avatar alt="Collaborator 1" src="/assets/collaborator1.png" />
-        <Avatar alt="Collaborator 2" src="/assets/collaborator2.png" />
-        <Avatar alt="Collaborator 3" src="/assets/collaborator3.png" />
-        <Avatar alt="Collaborator 4" src="/assets/collaborator4.png" />
-        <Avatar alt="Collaborator 5" src="/assets/collaborator5.png" /> {/* More avatars if needed */}
+        <Avatar alt="Collaborator 1" src="/assets/Ellipse 51.png" />
+        <Avatar alt="Collaborator 2" src="/assets/Ellipse 52.png" />
+        <Avatar alt="Collaborator 3" src="/assets/Ellipse 56.png" />
+        <Avatar alt="Collaborator 4" src="/assets/Ellipse 54.png" /> {/* More avatars if needed */}
       </AvatarGroup>
     </Box>
   <Box 
@@ -316,111 +315,8 @@ function Main() {
   }}
 />
 
-{/* Grid Layout */}
 
-
- {/* <Box sx={{ display: 'flex', justifyContent: 'center', padding: 2 }}>
-      <Grid2 container spacing={2} sx={{ maxWidth: 4 * (itemSize + 16), width: '100%' }} justifyContent="center">
-        {mediaItems.map((item, index) => (
-          <Grid2 key={index} xs={12} sm={6} md={3} lg={3}>
-            <Box
-              sx={{
-                width: itemSize,
-                height: itemSize,
-                borderRadius: '8px',
-                overflow: 'hidden',
-                boxShadow: 3,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: '#f0f0f0'
-              }}
-            >
-              {item.type === 'image' && (
-                <Box
-                  component="img"
-                  src={item.src}
-                  alt={item.alt}
-                  sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              )}
-              {item.type === 'video' && (
-                <Box component="video" controls sx={{ width: '100%', height: '100%', objectFit: 'cover' }}>
-                  <source src={item.src} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </Box>
-              )}
-              {item.type === 'audio' && (
-                <Box sx={{ textAlign: 'center', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <Typography variant="body2" sx={{ mb: 1 }}>
-                    {item.alt}
-                  </Typography>
-                  <audio controls style={{ width: '100%' }}>
-                    <source src={item.src} type="audio/mpeg" />
-                    Your browser does not support the audio tag.
-                  </audio>
-                </Box>
-              )}
-            </Box>
-          </Grid2>
-        ))}
-      </Grid2>
-    </Box> */}
-     {/* <Box style={{Padding: 'inherit'}}
-      sx={{
-        flexGrow: 1,
-        padding: 5,
-        height: '100vh', // Full viewport height
-        display: 'flex',
-        justifyContent: 'center', // Center horizontally
-        alignItems: 'center', // Center vertically
-      }}
-    >
-      <Grid2 container spacing={2} sx={{ maxWidth: 1200, margin: '0 auto' }}>
-        {mediaItems.map((item, index) => (
-          <Grid2 key={index} item xs={12} sm={6} md={3} lg={3}>
-            <Paper
-              sx={{
-                height: 200,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 2,
-                overflow: 'hidden',
-              }}
-            >
-              {item.type === 'image' && (
-                <Box
-                  component="img"
-                  src={item.src}
-                  alt={item.alt}
-                  sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              )}
-              {item.type === 'video' && (
-                <Box component="video" controls sx={{ width: '100%', height: '100%', objectFit: 'cover' }}>
-                  <source src={item.src} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </Box>
-              )}
-              {item.type === 'audio' && (
-                <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="body2" sx={{ mb: 1 }}>
-                    {item.alt}
-                  </Typography>
-                  <audio controls style={{ width: '100%' }}>
-                    <source src={item.src} type="audio/mpeg" />
-                    Your browser does not support the audio tag.
-                  </audio>
-                </Box>
-              )}
-            </Paper>
-          </Grid2>
-        ))}
-      </Grid2>
-    </Box> */}
-     {/* <GridLayout /> */}
-     <GridLayout />
+     <GridLayout1 />
     </ThemeProvider>
   )
 }
