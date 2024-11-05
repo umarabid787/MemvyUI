@@ -8,7 +8,7 @@ import Icon from '@mui/material/Icon';
 import EditIcon from '@mui/icons-material/Edit';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Box from '@mui/material/Box';
-import { Avatar, AvatarGroup } from '@mui/material';
+import { Avatar, AvatarGroup, Divider } from '@mui/material';
 import { TextField, Select, MenuItem } from '@mui/material';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
@@ -22,6 +22,7 @@ import NoteIcon from '@mui/icons-material/Note';
 import MenuIcon from '@mui/icons-material/Menu';
 import GridLayout from './GridLayout';
 import { Padding } from '@mui/icons-material';
+import GridLayout1 from './GridLayout1';
 
 
 
@@ -77,9 +78,9 @@ function Main() {
         
           </div>
           
-          {/* <Typography variant="h3" style={{ flexGrow: 1, textAlign: 'center' }}>
+          <Typography variant="h3" style={{ flexGrow: 1, textAlign: 'center' }}>
             Material UI APP
-          </Typography> */}
+          </Typography>
            <div style={{ display: 'flex', alignItems: 'center' }}>
             
             <Button 
@@ -159,13 +160,15 @@ function Main() {
         Peggy Harrison's life is a tapestry of cherished memories, from her birth and education to her impactful career and loving family. Her story, enriched by audio, video clips, photos, and notes from loved ones, beautifully captures her vibrant spirit and passions.
       </Typography>
     </Box>
-    <Box
+   <Box
   sx={{
     display: 'flex',
-    justifyContent: 'space-between',
+    flexDirection: { xs: 'column', sm: 'row' }, // Stack on small screens, horizontal on larger
+    justifyContent: { xs: 'center', sm: 'space-between' },
     alignItems: 'center',
-    padding: '20px 90px', // Adjust as needed
-    backgroundColor: 'inherit', // Background color
+    padding: { xs: '10px 20px', sm: '20px 90px' }, // Smaller padding on mobile
+    backgroundColor: 'inherit',
+    gap: { xs: 2, sm: 0 }, // Add gap between elements on smaller screens
   }}
 >
   {/* Search Field on the Left */}
@@ -173,103 +176,94 @@ function Main() {
     variant="outlined"
     placeholder="Search..."
     size="small"
-    sx={{ 
-      width: '200px', 
+    sx={{
+      width: { xs: '100%', sm: '200px' }, // Full width on small screens
       '& .MuiOutlinedInput-root': {
-        color: '#1A205A', // Text color
+        color: '#1A205A',
         '& fieldset': {
-          borderColor: '#1A205A', // Border color
+          borderColor: '#1A205A',
         },
         '&:hover fieldset': {
-          borderColor: '#1A205A', // Border color on hover
+          borderColor: '#1A205A',
         },
         '&.Mui-focused fieldset': {
-          borderColor: '#1A205A', // Border color when focused
+          borderColor: '#1A205A',
         },
       },
     }}
   />
 
   {/* Centered Button Group */}
-  <Box sx={{ display: 'flex', gap: 1 }}>
-    <Button
-      style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }}
-      variant="contained"
-      color="secondary"
-      sx={{ borderRadius: '20px', padding: '11px 16px' }}
-      onClick={handleClick}
-    >
-      All
-    </Button>
-    <Button
-      style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }}
-      variant="contained"
-      color="secondary"
-      sx={{ borderRadius: '20px', padding: '11px 16px' }}
-      onClick={handleClick}
-    >
-      Photos
-    </Button>
-    <Button
-      style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }}
-      variant="contained"
-      color="secondary"
-      sx={{ borderRadius: '20px', padding: '11px 16px' }}
-      onClick={handleClick}
-    >
-      Videos
-    </Button>
-    <Button
-      style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }}
-      variant="contained"
-      color="secondary"
-      sx={{ borderRadius: '20px', padding: '11px 16px' }}
-      onClick={handleClick}
-    >
-      Notes
-    </Button>
-    <Button
-      style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }}
-      variant="contained"
-      color="secondary"
-      sx={{ borderRadius: '20px', padding: '11px 16px' }}
-      onClick={handleClick}
-    >
-      Video
-    </Button>
+  <Box
+    sx={{
+      display: 'flex',
+      gap: 1,
+      flexWrap: 'wrap', // Wrap buttons on smaller screens
+      justifyContent: { xs: 'center', sm: 'initial' },
+    }}
+  >
+    {['All', 'Photos', 'Videos', 'Notes', 'Video'].map((label) => (
+      <Button
+        key={label}
+        style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }}
+        variant="contained"
+        color="secondary"
+        sx={{
+          borderRadius: '20px',
+          padding: '8px 12px', // Adjust padding for smaller screens
+        }}
+        onClick={handleClick}
+      >
+        {label}
+      </Button>
+    ))}
   </Box>
 
   {/* View Field on the Right */}
-  <Box 
-      sx={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: 1 // Space between buttons
-      }}
+  <Box
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 1,
+      marginTop: { xs: 2, sm: 0 }, // Add margin on smaller screens to create space
+      justifyContent: { xs: 'center', sm: 'initial' },
+    }}
+  >
+    <Button
+      startIcon={<ViewListIcon />}
+      size="small"
+      sx={{ textTransform: 'none' }}
     >
-      <Button
-        startIcon={<ViewListIcon />}
-        size="small"
-        sx={{ textTransform: 'none' }}
-      >
-        List View
-      </Button>
-      
-      <Button
-        startIcon={<ViewModuleIcon />}
-        size="small"
-        sx={{ textTransform: 'none' }}
-      >
-        Grid View
-      </Button>
-      
-      <IconButton aria-label="menu" style={{color:'#1976d2'}}>
+      List View
+    </Button>
+
+    <Button
+      startIcon={<ViewModuleIcon />}
+      size="small"
+      sx={{ textTransform: 'none' }}
+    >
+      Grid View
+    </Button>
+
+    <IconButton aria-label="menu" sx={{ color: '#1976d2' }}>
       <MenuIcon />
     </IconButton>
-    </Box>
+  </Box>
 </Box>
+<Divider
+  sx={{
+    backgroundColor: 'secondary.main', // Theme color for the divider
+    height: '1px', // Thickness of the divider
+    marginTop: '10px', // Space before the divider
+    marginLeft: '90px', // Gap from the left side
+    marginRight: '90px', // Gap from the right side
+  }}
+/>
 
- <Box sx={{ display: 'flex', justifyContent: 'center', padding: 2 }}>
+{/* Grid Layout */}
+
+
+ {/* <Box sx={{ display: 'flex', justifyContent: 'center', padding: 2 }}>
       <Grid2 container spacing={2} sx={{ maxWidth: 4 * (itemSize + 16), width: '100%' }} justifyContent="center">
         {mediaItems.map((item, index) => (
           <Grid2 key={index} xs={12} sm={6} md={3} lg={3}>
@@ -315,7 +309,7 @@ function Main() {
           </Grid2>
         ))}
       </Grid2>
-    </Box>
+    </Box> */}
      {/* <Box style={{Padding: 'inherit'}}
       sx={{
         flexGrow: 1,
@@ -369,7 +363,8 @@ function Main() {
         ))}
       </Grid2>
     </Box> */}
-     
+     {/* <GridLayout /> */}
+     <GridLayout1 />
     </ThemeProvider>
   )
 }

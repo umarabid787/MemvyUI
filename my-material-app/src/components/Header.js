@@ -94,6 +94,7 @@ function Header() {
         </Toolbar>
       </AppBar>
       {/* <Divider style={{ marginTop: '8px' }} /> Divider after the AppBar */}
+      
     </ThemeProvider>
   );
 }
