@@ -54,7 +54,7 @@ function Header() {
               }
               onClick={handleClick}
             >
-              Memvy Bank
+              Memvy Banks
             </Button>
             
             <Button
