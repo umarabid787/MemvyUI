@@ -30,7 +30,7 @@ function Header() {
   };
 
   // Replace 'user-image-url' with the actual URL of the user image
-  const userImageUrl = 'user-image-url';
+  const userImageUrl = '/assets/Ellipse 70.png';
 
   return (
     <ThemeProvider theme={theme}>
@@ -45,7 +45,7 @@ function Header() {
         >
          <div style={{ display: 'flex', alignItems: 'center' }}>
           <Button 
-            style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
+            style={{ color: '#B3BED4', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
             startIcon={
               <img src="/assets/Union.png" alt="Home Icon" style={{ width: '48.63px', height: '24px' }} />
             }
@@ -55,7 +55,7 @@ function Header() {
           </Button>
           
           <Button 
-            style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
+            style={{ color: '#B3BED4', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
             startIcon={
               <img src="/assets/Shape.png" alt="Drafts Icon" style={{ width: '16px', height: '16px' }} />
             }
@@ -65,7 +65,7 @@ function Header() {
           </Button>
           
           <Button 
-            style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
+            style={{ color: '#B3BED4', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
             startIcon={
               <img src="/assets/Shape (1).png" alt="Collaboration Icon" style={{ width: '16px', height: '16px' }} />
             }
@@ -84,18 +84,19 @@ function Header() {
   alt="User Image" 
   src={userImageUrl} 
   sx={{ 
-    width: 30,  // Set the desired width
-    height: 30, // Set the desired height
-    marginRight: '8px' 
+    width: 28,  // Set the desired width
+    height: 28, // Set the desired height
+    marginRight: '15px' 
   }} 
 />
 
             <Button 
             variant="contained" 
             color="secondary" 
-            sx={{ borderRadius: '20px' }} // Adjust the value for more or less rounding
+             style={{ textTransform: 'none' }}
+            sx={{ borderRadius: '200px' ,marginRight: '15px' }} // Adjust the value for more or less rounding
             >
-            <Icon>add_circle</Icon>
+            <Icon style={{ fontSize: '13.3px' }}>add_circle</Icon>
             Create
             </Button>
 
