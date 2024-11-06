@@ -15,8 +15,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="ellipse-background">
+       <div class="ellipse-33">
         <Header />
         <Main />
+        </div>
       </div>
     </ThemeProvider>
   );

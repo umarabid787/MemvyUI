@@ -20,6 +20,7 @@ const theme = createTheme({
       main: '#2B3672',
     },
   },
+  shadows: Array(25).fill('none'), // Sets all shadows to 'none'
 });
 
 function Main() {
@@ -28,18 +29,18 @@ function Main() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position="static" style={{ backgroundColor: '#04071E' }}>
+      <AppBar position="static" style={{ backgroundColor: 'inherit' }}>
         <Toolbar
           style={{
             display: 'flex',
             justifyContent: 'space-between', // Space between items
             alignItems: 'center', // Align items vertically
-            flexGrow: 1,
+            flexGrow: 1
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
           <Button 
-             style={{ color: '#A9B4CC', fontSize: '0.8rem', textTransform: 'none', marginLeft: '15px' }} // Prevent capitalization
+             style={{ color: '#A9B4CC', fontSize: '0.8rem', textTransform: 'none', marginLeft: '50px' }} // Prevent capitalization
             startIcon={
               <img src="/assets/back.png" alt="Drafts Icon" style={{ width: '7.9px', height: '14.14px' }} />
             }
