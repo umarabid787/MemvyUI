@@ -120,213 +120,73 @@ const GridLayout1 = () => {
   return (
     <Box sx={{ maxWidth: 1200, margin: '0 auto', padding: 2 }}>
       {/* Search and Filter Controls */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-        {/* Search Field (Left) */}
-         <TextField
-  variant="outlined"
-  placeholder="Search..."
-  size="small"
-  sx={{
-    width: { xs: '100%', sm: '200px' }, // Full width on small screens
-    '& .MuiOutlinedInput-root': {
-      color: 'white', // Set input text color to white
-      borderRadius: '20px', // Rounded edges to make it look like a button
-      '& fieldset': {
-        borderColor: '#1A205A',
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2, flexDirection: { xs: 'column', sm: 'row' } }}>
+  {/* Search Field (Left) */}
+  <TextField
+    variant="outlined"
+    placeholder="Search..."
+    size="small"
+    sx={{
+      width: { xs: '100%', sm: '200px' }, // Full width on small screens
+      '& .MuiOutlinedInput-root': {
+        color: 'white',
+        borderRadius: '20px',
+        '& fieldset': {
+          borderColor: '#1A205A',
+        },
+        '&:hover fieldset': {
+          borderColor: '#1A205A',
+        },
+        '&.Mui-focused fieldset': {
+          borderColor: '#1A205A',
+        },
       },
-      '&:hover fieldset': {
-        borderColor: '#1A205A',
+      '& input': {
+        color: 'white',
+        padding: '10px 20px',
       },
-      '&.Mui-focused fieldset': {
-        borderColor: '#1A205A',
+      '& .MuiInputBase-input': {
+        backgroundColor: '#1A205A',
+        borderRadius: '20px',
       },
-    },
-    '& input': {
-      color: 'white', // Set placeholder text color to white
-      padding: '10px 20px', // Add padding for a button-like appearance
-    },
-    '& .MuiInputBase-input': {
-      backgroundColor: '#1A205A', // Optional: Set background color for better contrast
-      borderRadius: '20px', // Ensure input area is also rounded
-    },
-  }}
-/>
+    }}
+  />
 
+  {/* Filter Buttons (Center) */}
+  <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1, flexWrap: { xs: 'wrap', sm: 'nowrap' } }}>
+    {['All', 'Image', 'Video', 'Audio', 'Text'].map((label) => (
+      <Button
+        key={label}
+        variant="contained"
+        onClick={() => handleClick(label)}
+        sx={{
+          textTransform: 'none',
+          backgroundColor: filter === label ? 'white' : '#2B3672',
+          color: filter === label ? 'black' : 'white',
+          borderRadius: '20px',
+          margin: '8px',
+          '&:hover': {
+            backgroundColor: filter === label ? 'white' : '#2B3672',
+            color: filter === label ? 'black' : 'white',
+          },
+        }}
+      >
+        {label}
+      </Button>
+    ))}
+  </Box>
 
-        {/* Filter Buttons (Center) */}
-       <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}>
-  <Button
-    variant="contained"
-    onClick={() => handleClick('All')}
-    sx={{
-      textTransform: 'none', 
-      backgroundColor: filter === 'All' ? 'white' : '#2B3672',
-      color: filter === 'All' ? 'black' : 'white',
-      borderRadius: '20px', // Round the edges
-      margin: '0 8px', // Add space between buttons
-      '&:hover': {
-        backgroundColor: filter === 'All' ? 'white' : '#2B3672', // Keep hover consistent
-        color: filter === 'All' ? 'black' : 'white',
-      },
-    }}
-  >
-    All
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => handleClick('Image')}
-    sx={{
-      textTransform: 'none', 
-      backgroundColor: filter === 'Image' ? 'white' : '#2B3672',
-      color: filter === 'Image' ? 'black' : 'white',
-      borderRadius: '20px', // Round the edges
-      margin: '0 8px', // Add space between buttons
-      '&:hover': {
-        backgroundColor: filter === 'Image' ? 'white' : '#2B3672', // Keep hover consistent
-        color: filter === 'Image' ? 'black' : 'white',
-      },
-    }}
-  >
-    Image
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => handleClick('Video')}
-    sx={{
-      textTransform: 'none', 
-      backgroundColor: filter === 'Video' ? 'white' : '#2B3672',
-      color: filter === 'Video' ? 'black' : 'white',
-      borderRadius: '20px', // Round the edges
-      margin: '0 8px', // Add space between buttons
-      '&:hover': {
-        backgroundColor: filter === 'Video' ? 'white' : '#2B3672', // Keep hover consistent
-        color: filter === 'Video' ? 'black' : 'white',
-      },
-    }}
-  >
-    Video
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => handleClick('Audio')}
-    sx={{
-      textTransform: 'none', 
-      backgroundColor: filter === 'Audio' ? 'white' : '#2B3672',
-      color: filter === 'Audio' ? 'black' : 'white',
-      borderRadius: '20px', // Round the edges
-      margin: '0 8px', // Add space between buttons
-      '&:hover': {
-        backgroundColor: filter === 'Audio' ? 'white' : '#2B3672', // Keep hover consistent
-        color: filter === 'Audio' ? 'black' : 'white',
-      },
-    }}
-  >
-    Audio
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => handleClick('Text')}
-    sx={{
-      textTransform: 'none', 
-      backgroundColor: filter === 'Text' ? 'white' : '#2B3672',
-      color: filter === 'Text' ? 'black' : 'white',
-      borderRadius: '20px', // Round the edges
-      margin: '0 8px', // Add space between buttons
-      '&:hover': {
-        backgroundColor: filter === 'Text' ? 'white' : '#2B3672', // Keep hover consistent
-        color: filter === 'Text' ? 'black' : 'white',
-      },
-    }}
-  >
-    Text
-  </Button>
+  {/* Other Button (Right) */}
+  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0, marginTop: { xs: 2, sm: 0 }, justifyContent: { xs: 'center', sm: 'initial' } }}>
+    <Button size="small" sx={{ textTransform: 'none', color: 'white', '&:hover': { color: 'white' } }}>View</Button>
+    <Button startIcon={<img src="/assets/waiting.png" alt="Waiting Icon" style={{ width: '13.5px', height: '18px' }} />} size="small" sx={{ textTransform: 'none', color: 'secondary', '&:hover': { color: 'white', '& img': { filter: 'brightness(0) saturate(100%) invert(100%)' } } }} />
+    <Button startIcon={<img src="/assets/grid.png" alt="Grid View Icon" style={{ width: '18px', height: '18px' }} />} size="small" sx={{ textTransform: 'none', color: 'secondary', '&:hover': { color: 'white' } }} />
+    <IconButton aria-label="menu" sx={{ color: 'secondary', '&:hover': { color: 'white' } }}>
+      <img src="/assets/three_dot.png" alt="Menu Icon" style={{ width: '16px', height: '20px' }} />
+    </IconButton>
+  </Box>
 </Box>
 
-
-
-        {/* Other Button (Right) */}
-        <Box
-  sx={{
-    display: 'flex',
-    alignItems: 'center',
-    gap: 0, // Reduced gap for closer spacing
-    marginTop: { xs: 2, sm: 0 }, // Add margin on smaller screens to create space
-    justifyContent: { xs: 'center', sm: 'initial' },
-  }}
->
-  <Button
-    size="small"
-    sx={{ 
-      textTransform: 'none', 
-      color: 'white', // Default color
-      '&:hover': {
-        color: 'white', // Change to white on hover
-      } 
-    }}
-  >
-    View
-  </Button>
-
-  <Button
-  startIcon={
-    <img 
-      src="/assets/waiting.png" 
-      alt="Waiting Icon" 
-      style={{ 
-        width: '13.5px', 
-        height: '18px', 
-        filter: 'brightness(0) saturate(100%) invert(54%) sepia(12%) saturate(1010%) hue-rotate(200deg) brightness(94%) contrast(91%)' 
-      }}
-    />
-  }
-  size="small"
-  sx={{ 
-    textTransform: 'none', 
-    color: 'secondary', // Default text color
-    '&:hover': {
-      color: 'white', // Changes text color to white on hover
-      '& img': {
-        filter: 'brightness(0) saturate(100%) invert(100%)', // Makes icon white on hover
-      }
-    }
-  }}
->
-</Button>
-
-
-  <Button
-    startIcon={
-      <img 
-        src="/assets/grid.png" 
-        alt="Grid View Icon" 
-        style={{ width: '18px', height: '18px', filter: 'brightness(0) saturate(100%) invert(54%) sepia(12%) saturate(1010%) hue-rotate(200deg) brightness(94%) contrast(91%)' }} // Adjust filter for default color
-      />
-    }
-    size="small"
-    sx={{ 
-      textTransform: 'none', 
-      color: 'secondary', // Default color
-      '&:hover': {
-        color: 'white', // Change to white on hover
-      } 
-    }}
-  >
-  </Button>
-
-  <IconButton aria-label="menu" sx={{ 
-    color: 'secondary', // Default color
-    '&:hover': {
-      color: 'white', // Change to white on hover
-    } 
-  }}>
-    <img 
-      src="/assets/three_dot.png" 
-      alt="Menu Icon" 
-      style={{ width: '16px', height: '20px', filter: 'brightness(0) saturate(100%) invert(54%) sepia(12%) saturate(1010%) hue-rotate(200deg) brightness(94%) contrast(91%)' }} // Adjust filter for default color
-    />
-  </IconButton>
-</Box>
-      </Box>
       <Divider
   sx={{
     backgroundColor: 'secondary.main', // Theme color for the divider
