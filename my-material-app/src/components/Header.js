@@ -29,7 +29,7 @@ function Header() {
       <AppBar
         position="static"
         sx={{
-    width: '1440px',             // Fixed width
+    width: '100%',             // Fixed width
     height: '91px',               // Fixed height
     padding: '24px 90px',         // Padding: top/bottom 24px, left/right 90px
     backgroundColor: '#04071E',   // Background color
@@ -94,7 +94,7 @@ function Header() {
               style={{ textTransform: 'none' }}
               sx={{
                 borderRadius: '200px',
-                marginRight: '60px',
+                marginRight: '5%',
               }}
             >
               <Icon style={{ fontSize: '13.3px' }}>add_circle</Icon>
