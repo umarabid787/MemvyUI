@@ -106,7 +106,7 @@ const mediaItems = [
   },
   { 
     type: 'image', 
-    src: '/assets/download (17).jpeg', 
+    src: '/assets/Rectangle 158.png', 
     alt: 'Random Image 2', 
     username: (
       <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">

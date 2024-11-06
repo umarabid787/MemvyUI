@@ -127,7 +127,9 @@ function Main() {
         variant="body1" // Use a suitable variant for body text
         style={{ 
           color: 'white', 
-          maxWidth: '650px', // Limit the width for wrapping
+          maxWidth: '650px',
+          margin: '0 20px',
+          marginBottom:'10px' // Limit the width for wrapping
         }}
       >
         Peggy Harrison's life is a tapestry of cherished memories, from her birth and education to her impactful career and loving family. Her story, enriched by audio, video clips, photos, and notes from loved ones, beautifully captures her vibrant spirit and passions.
