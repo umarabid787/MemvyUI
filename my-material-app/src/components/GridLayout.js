@@ -76,7 +76,7 @@ const GridLayout = () => {
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Box sx={{ mr: 1, color: 'white' }}>{getIcon(item.type)}</Box>
                 <Box>
-                  <Typography variant="body2">{item.username}</Typography>
+                  <Typography variant="body2" size="16px">{item.username}</Typography>
                   <Typography variant="caption">
                     {format(new Date(item.date), 'MMM d, yyyy')}
                   </Typography>

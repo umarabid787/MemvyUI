@@ -38,19 +38,6 @@ const theme = createTheme({
   },
 });
 const itemSize = 250;
-const mediaItems = [
-  { type: 'image', src: '/assets/download .jpeg', alt: 'Random Image 1' },
-  { type: 'video', src: 'https://www.w3schools.com/html/mov_bbb.mp4', alt: 'Sample Video' },
-   { type: 'image', src: '/assets/1.jpeg', alt: 'Random Image 1' },
-   { type: 'image', src: '/assets/download (18).jpeg', alt: 'Random Image 3' },
-  { type: 'audio', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', alt: 'Sample Audio' },
-{ type: 'video', src: 'https://www.w3schools.com/html/mov_bbb.mp4', alt: 'Sample Video 2' },
-  { type: 'image', src: '/assets/download (17).jpeg', alt: 'Random Image 2' },
-  { type: 'image', src: '/assets/download (18).jpeg', alt: 'Random Image 3' },
-   { type: 'image', src: '/assets/download (19).jpeg', alt: 'Random Image 1' },
-   { type: 'image', src: '/assets/download (18).jpeg', alt: 'Random Image 3' },
-   { type: 'audio', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', alt: 'Sample Audio' },
-];
 
 function Main() {
      const handleClick = () => {
@@ -68,13 +55,16 @@ function Main() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Button 
-              style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }} // Prevent capitalization
-              startIcon={<ArrowBackIcon />}
-              onClick={handleClick}
-            >
-              Back
-            </Button>
+          <Button 
+             style={{ color: '#A9B4CC', fontSize: '0.8rem', textTransform: 'none', marginLeft: '15px' }} // Prevent capitalization
+            startIcon={
+              <img src="/assets/back.png" alt="Drafts Icon" style={{ width: '7.9px', height: '14.14px' }} />
+            }
+            onClick={handleClick}
+          >
+            Back
+          </Button>
+          
         
           </div>
           
@@ -84,21 +74,20 @@ function Main() {
            <div style={{ display: 'flex', alignItems: 'center' }}>
             
             <Button 
-            style={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }}
+            style={{ color: '#FFFFFF', fontSize: '0.8rem', textTransform: 'none' }}
   variant="contained" 
   color="secondary" 
   sx={{ 
     borderRadius: '20px', 
-    padding: '11px 16px' // Top & Bottom: 11px, Left & Right: 16px
+    padding: '11px 16px',
+     marginRight: '50px'// Top & Bottom: 11px, Left & Right: 16px
   }}
-  startIcon={<EditIcon />}
+  startIcon={
+              <img src="/assets/efit.png" alt="Drafts Icon" style={{ width: '13px', height: '13px' }} />
+            }
 >
   Edit this Memvy
 </Button>
-
-<br></br>
-
-
           </div>
         </Toolbar>
          </AppBar>
@@ -122,8 +111,8 @@ function Main() {
         }}  // Make sure the image fits within the box
         />
       </Box>
-      <Typography variant="h4" style={{ font:'PolySans Trial',color:'white',flexGrow: 1, textAlign: 'center' }}>Peggy Life Story</Typography>
-    <Typography variant="h6" style={{ color:'white',flexGrow: 1, textAlign: 'center' }}>Created March 2011</Typography>
+      <Typography variant="h3" style={{ font:'PolySans Trial',color:'white',flexGrow: 1, textAlign: 'center', marginBottom: '10px' }}>Peggy Life Story</Typography>
+    <Typography variant="h6" style={{ color:'#B3BED4',flexGrow: 1, textAlign: 'center' }}>Created March 2011</Typography>
     <Box 
       sx={{ 
         display: 'flex', 
@@ -252,23 +241,31 @@ function Main() {
   </Button>
 
   <Button
-    startIcon={
-      <img 
-        src="/assets/waiting.png" 
-        alt="Waiting Icon" 
-        style={{ width: '13.5px', height: '18px', filter: 'brightness(0) saturate(100%) invert(54%) sepia(12%) saturate(1010%) hue-rotate(200deg) brightness(94%) contrast(91%)' }} // Adjust filter for default color
-      />
+  startIcon={
+    <img 
+      src="/assets/waiting.png" 
+      alt="Waiting Icon" 
+      style={{ 
+        width: '13.5px', 
+        height: '18px', 
+        filter: 'brightness(0) saturate(100%) invert(54%) sepia(12%) saturate(1010%) hue-rotate(200deg) brightness(94%) contrast(91%)' 
+      }}
+    />
+  }
+  size="small"
+  sx={{ 
+    textTransform: 'none', 
+    color: 'secondary', // Default text color
+    '&:hover': {
+      color: 'white', // Changes text color to white on hover
+      '& img': {
+        filter: 'brightness(0) saturate(100%) invert(100%)', // Makes icon white on hover
+      }
     }
-    size="small"
-    sx={{ 
-      textTransform: 'none', 
-      color: 'secondary', // Default color
-      '&:hover': {
-        color: 'white', // Change to white on hover
-      } 
-    }}
-  >
-  </Button>
+  }}
+>
+</Button>
+
 
   <Button
     startIcon={
