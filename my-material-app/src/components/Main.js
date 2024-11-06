@@ -78,9 +78,9 @@ function Main() {
         
           </div>
           
-          <Typography variant="h3" style={{ flexGrow: 1, textAlign: 'center' }}>
+          {/* <Typography variant="h3" style={{ flexGrow: 1, textAlign: 'center' }}>
             Material UI APP
-          </Typography>
+          </Typography> */}
            <div style={{ display: 'flex', alignItems: 'center' }}>
             
             <Button 
