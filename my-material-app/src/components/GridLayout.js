@@ -2,22 +2,87 @@ import React from 'react';
 import { Box, Paper, Typography, Avatar } from '@mui/material';
 import Masonry from '@mui/lab/Masonry';
 import { format } from 'date-fns';
-import ImageIcon from '@mui/icons-material/Image';
-import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
-import AudiotrackIcon from '@mui/icons-material/Audiotrack';
-import TextFieldsIcon from '@mui/icons-material/TextFields';
 
 const mediaItems = [
-  { type: 'image', src: '/assets/check.jpg', alt: 'Random Image 1', username: 'user1', date: '2024-11-01' },
-  { type: 'audio', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', alt: 'Sample Audio', username: 'user5', date: '2024-11-05' },
-  { type: 'video', src: 'https://www.w3schools.com/html/mov_bbb.mp4', alt: 'Sample Video', username: 'user2', date: '2024-11-02' },
-  { type: 'text', content: 'This is a sample text content.', username: 'user12', date: '2024-11-12' }, // New text item
-  { type: 'image', src: '/assets/1.jpeg', alt: 'Random Image 1', username: 'user3', date: '2024-11-03' },
-  { type: 'image', src: '/assets/download (18).jpeg', alt: 'Random Image 3', username: 'user4', date: '2024-11-04' },
-  { type: 'audio', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', alt: 'Sample Audio', username: 'user5', date: '2024-11-05' },
-  { type: 'video', src: 'https://www.w3schools.com/html/mov_bbb.mp4', alt: 'Sample Video 2', username: 'user6', date: '2024-11-06' },
-  { type: 'image', src: '/assets/download (17).jpeg', alt: 'Random Image 2', username: 'user7', date: '2024-11-07' },
-  { type: 'image', src: '/assets/download (18).jpeg', alt: 'Random Image 3', username: 'user8', date: '2024-11-08' },
+  { 
+    type: 'image', 
+    src: '/assets/95ed528db41e7c00e1ed7fcb7f31e1cc.png', 
+    alt: 'Random Image 1', 
+    username: 'user1', 
+    date: '2024-11-01',
+    userImage: '/assets/Ellipse 63.png' // User image for user1
+  },
+  { 
+    type: 'audio', 
+    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 
+    alt: 'Sample Audio', 
+    username: 'user5', 
+    date: '2024-11-05',
+    userImage: '/assets/Ellipse 51.png' // User image for user5
+  },
+  { 
+    type: 'video', 
+    src: 'https://www.w3schools.com/html/mov_bbb.mp4', 
+    alt: 'Sample Video', 
+    username: 'user2', 
+    date: '2024-11-02',
+    userImage: '/assets/Ellipse 52.png' // User image for user2
+  },
+  { 
+    type: 'text', 
+    content: 'This is a sample text content.', 
+    username: 'user12', 
+    date: '2024-11-12',
+    userImage: '/assets/Ellipse 54.png' // User image for user12
+  }, // New text item
+  { 
+    type: 'image', 
+    src: '/assets/1.jpeg', 
+    alt: 'Random Image 1', 
+    username: 'user3', 
+    date: '2024-11-03',
+    userImage: '/assets/Ellipse 61.png' // User image for user3
+  },
+  { 
+    type: 'image', 
+    src: '/assets/download (18).jpeg', 
+    alt: 'Random Image 3', 
+    username: 'user4', 
+    date: '2024-11-04',
+    userImage: '/assets/Ellipse 62.png' // User image for user4
+  },
+  { 
+    type: 'audio', 
+    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 
+    alt: 'Sample Audio', 
+    username: 'user5', 
+    date: '2024-11-05',
+    userImage: '/assets/Ellipse 63.png' // User image for user5
+  },
+  { 
+    type: 'video', 
+    src: 'https://www.w3schools.com/html/mov_bbb.mp4', 
+    alt: 'Sample Video 2', 
+    username: 'user6', 
+    date: '2024-11-06',
+    userImage: '/assets/Ellipse 70.png' // User image for user6
+  },
+  { 
+    type: 'image', 
+    src: '/assets/download (17).jpeg', 
+    alt: 'Random Image 2', 
+    username: 'user7', 
+    date: '2024-11-07',
+    userImage: '/assets/Ellipse 52.png' // User image for user7
+  },
+  { 
+    type: 'image', 
+    src: '/assets/download (18).jpeg', 
+    alt: 'Random Image 3', 
+    username: 'user8', 
+    date: '2024-11-08',
+    userImage: '/assets/Ellipse 54.png' // User image for user8
+  },
 ];
 
 const getIcon = (type) => {
@@ -34,7 +99,6 @@ const getIcon = (type) => {
       return null;
   }
 };
-
 
 const GridLayout = () => {
   return (
@@ -76,14 +140,20 @@ const GridLayout = () => {
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Box sx={{ mr: 1, color: 'white' }}>{getIcon(item.type)}</Box>
                 <Box>
-                  <Typography variant="body2" size="16px">{item.username}</Typography>
+                  <Typography variant="body2">{item.username}</Typography>
                   <Typography variant="caption">
                     {format(new Date(item.date), 'MMM d, yyyy')}
                   </Typography>
                 </Box>
               </Box>
               {/* User Icon/Avatar */}
-              <Avatar sx={{ width: 30, height: 30 }}>{item.username[0].toUpperCase()}</Avatar>
+              <Avatar 
+                src={item.userImage} // Use user image from mediaItems
+                alt={item.username}
+                sx={{ width: 30, height: 30 }} 
+              >
+                {item.username[0].toUpperCase()} {/* Fallback to initials if image is not available */}
+              </Avatar>
             </Box>
 
             {/* Media Content in Card */}
