@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Paper, Typography, Avatar, Button, TextField, Divider } from '@mui/material';
 import Masonry from '@mui/lab/Masonry';
 import { format } from 'date-fns';
+import { Link } from '@mui/material';
 import { IconButton } from '@mui/material';
 
 const mediaItems = [
@@ -9,15 +10,25 @@ const mediaItems = [
     type: 'image', 
     src: '/assets/95ed528db41e7c00e1ed7fcb7f31e1cc.png', 
     alt: 'Random Image 1', 
-    username: 'user1', 
+    username:  (
+      <Link href={`/user/${encodeURIComponent('Marek Novak')}`} color="white" underline="hover">
+      Marek Novak
+      </Link>
+    ), 
     date: '2024-11-01',
     userImage: '/assets/Ellipse 63.png' // User image for user1
   },
+  
   { 
     type: 'audio', 
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 
     alt: 'Sample Audio', 
-    username: 'user5', 
+    username: 
+    (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+     Johansson Daniela 
+      </Link>
+    ), 
     date: '2024-11-05',
     userImage: '/assets/Ellipse 51.png' // User image for user5
   },
@@ -25,14 +36,22 @@ const mediaItems = [
     type: 'video', 
     src: 'https://www.w3schools.com/html/mov_bbb.mp4', 
     alt: 'Sample Video', 
-    username: 'user2', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+    Daniela 
+      </Link>
+    ), 
     date: '2024-11-02',
     userImage: '/assets/Ellipse 52.png' // User image for user2
   },
   { 
     type: 'text', 
     content: 'This is a sample text content.', 
-    username: 'user12', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+    Daniela Rossi
+      </Link>
+    ),  
     date: '2024-11-12',
     userImage: '/assets/Ellipse 54.png' // User image for user12
   }, // New text item
@@ -40,7 +59,11 @@ const mediaItems = [
     type: 'image', 
     src: '/assets/1.jpeg', 
     alt: 'Random Image 1', 
-    username: 'user3', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+    Marek Novak
+      </Link>
+    ), 
     date: '2024-11-03',
     userImage: '/assets/Ellipse 61.png' // User image for user3
   },
@@ -48,7 +71,11 @@ const mediaItems = [
     type: 'image', 
     src: '/assets/download (18).jpeg', 
     alt: 'Random Image 3', 
-    username: 'user4', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+     Johansson  Svensson
+      </Link>
+    ),  
     date: '2024-11-04',
     userImage: '/assets/Ellipse 62.png' // User image for user4
   },
@@ -56,7 +83,11 @@ const mediaItems = [
     type: 'audio', 
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 
     alt: 'Sample Audio', 
-    username: 'user5', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+    Emma  Svensson
+      </Link>
+    ),  
     date: '2024-11-05',
     userImage: '/assets/Ellipse 63.png' // User image for user5
   },
@@ -64,7 +95,11 @@ const mediaItems = [
     type: 'video', 
     src: 'https://www.w3schools.com/html/mov_bbb.mp4', 
     alt: 'Sample Video 2', 
-    username: 'user6', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+     Svensson 
+      </Link>
+    ),  
     date: '2024-11-06',
     userImage: '/assets/Ellipse 70.png' // User image for user6
   },
@@ -72,7 +107,11 @@ const mediaItems = [
     type: 'image', 
     src: '/assets/download (17).jpeg', 
     alt: 'Random Image 2', 
-    username: 'user7', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+    Johan Svensson
+      </Link>
+    ), 
     date: '2024-11-07',
     userImage: '/assets/Ellipse 52.png' // User image for user7
   },
@@ -80,7 +119,11 @@ const mediaItems = [
     type: 'image', 
     src: '/assets/download (18).jpeg', 
     alt: 'Random Image 3', 
-    username: 'user8', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+   Elena Petrova
+      </Link>
+    ),  
     date: '2024-11-08',
     userImage: '/assets/Ellipse 54.png' // User image for user8
   },
