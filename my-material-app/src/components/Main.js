@@ -29,6 +29,7 @@ function Main() {
   };
   return (
     <ThemeProvider theme={theme}>
+    <div className="ellipse-background1">
       <AppBar position="static" style={{ backgroundColor: 'inherit' }}>
         <Toolbar
           style={{
@@ -133,6 +134,7 @@ function Main() {
       </Typography>
     </Box>
      <GridLayout1 />
+     </div>
     </ThemeProvider>
   )
 }

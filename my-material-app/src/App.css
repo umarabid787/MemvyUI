@@ -44,12 +44,16 @@
   overflow: hidden;
   background-color: #04071E;
   /* Fallback color */
-  background-image: url('../public/assets/Ellipse\ 7.png'), url('../public/assets/Ellipse\ 33.png');
+  
+  /* Ensure it covers the full height */
+}
+.ellipse-background1 {
+background-image: url('../public/assets/Ellipse\ 7.png'), url('../public/assets/Ellipse\ 33.png');
   background-repeat: no-repeat, no-repeat;
   background-size: contain, contain;
   /* Adjust size as necessary */
   background-position: left top, right bottom;
   /* Adjust positions as necessary */
+  /*background-attachment: fixed, fixed;*/
   min-height: 100vh;
-  /* Ensure it covers the full height */
 }
