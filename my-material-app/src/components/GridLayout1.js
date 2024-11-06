@@ -46,7 +46,8 @@ const mediaItems = [
   },
   { 
     type: 'text', 
-    content: 'This is a sample text content.', 
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a pellentesque massa. Nam eu tincidunt ipsum. Vivamus malesuada risus nec odio bibendum finibus. Etiam a metus nec ligula lobortis facilisis. Cras dui arcu, porta eget finibus vitae, laoreet id sem. Vivamus lectus orci, tincidunt id magna in, elementum mollis ipsum. Integer eu euismod leo. Aenean elementum quis ligula non consequat. Duis eu justo eget dolor hendrerit vulputate sed eget mauris. Proin congue, magna quis sodales venenatis, orci leo scelerisque velit, in ullamcorper nulla sapien non augue. Morbi dapibus eget mi sit amet consectetur. Phasellus consectetur faucibus quam in ullamcorper. Nullam in risus non lectus convallis eleifend. Donec ac sapien mauris. Nunc sagittis porta urna, vel pretium metus dignissim vel. Fusce eu '
+, 
     username: (
       <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
     Daniela Rossi
@@ -269,13 +270,42 @@ const GridLayout1 = () => {
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Box sx={{ mr: 1 }}>{getIcon(item.type)}</Box>
                 <Box>
-                  <Typography variant="body2">{item.username}</Typography>
+                 <Typography
+  variant="body2"
+  sx={{
+    fontFamily: 'PolySans Trial, sans-serif',
+    fontSize: '16px',
+    fontWeight: 400,
+    lineHeight: '19.2px',
+    textAlign: 'left',
+  }}
+>
+  {item.username}
+</Typography>
+
+
+<Typography
+  variant="caption"
+  sx={{
+    fontFamily: 'PolySans Trial,san-serif',
+    fontSize: '12px',
+    fontWeight: 400,
+    lineHeight: '14.4px',
+    textAlign: 'left',
+  }}
+>
+  {/* {format(new Date(item.date), 'MMM dd, yyyy')} */}
+</Typography>
+
                   <Typography variant="caption">{format(new Date(item.date), 'MMM dd, yyyy')}</Typography>
                 </Box>
               </Box>
 
               {/* User Avatar */}
-              <Avatar src={item.userImage} alt={item.username} sx={{ width: 32, height: 32 }} />
+              {/* <Avatar src={item.userImage} alt={item.username} sx={{ width: 32, height: 32 }} /> */}
+               <Link href={`/user/${encodeURIComponent(item.username.props.children)}`} underline="none">
+    <Avatar src={item.userImage} alt={item.username.props.children} sx={{ width: 32, height: 32 }} />
+  </Link>
             </Box>
 
             {/* Media Content */}
@@ -293,7 +323,42 @@ const GridLayout1 = () => {
                   Your browser does not support the audio element.
                 </audio>
               )}
-              {item.type === 'text' && <Typography>{item.content}</Typography>}
+              {/* {item.type === 'text' && <Typography>{item.content}</Typography>} */}
+              {item.type === 'text' && (
+  <Box
+    sx={{
+      maxHeight: '264px',
+      width: '250px', // Set a max height for the text container
+      overflow: 'hidden',
+      position: 'relative',
+      '&:after': {
+        content: '""',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: '20px', // Height of the blur effect
+        background: 'linear-gradient(to bottom, rgba(43, 54, 114, 0), #2B3672)', // Adjust gradient and color to match your theme
+      },
+    }}
+  >
+    <Typography
+      variant="body2"
+      color="white"
+      sx={{
+        fontFamily: 'PolySans Trial, sans-serif', // Apply PolySans Trial font
+        fontSize: '12px',
+        fontWeight: 400,
+        lineHeight: '14.4px',
+        textAlign: 'left',
+        whiteSpace: 'pre-line', // Preserve line breaks in the text
+      }}
+    >
+      {item.content}
+    </Typography>
+  </Box>
+)}
+
             </Box>
 
             <Divider sx={{ backgroundColor: '#3A4975' }} />
