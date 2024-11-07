@@ -41,7 +41,7 @@ function Main() {
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
           <Button 
-             style={{ color: '#A9B4CC', fontSize: '0.8rem', textTransform: 'none', marginLeft: '50px' }} // Prevent capitalization
+             style={{ color: '#A9B4CC', fontSize: '14px', textTransform: 'none', marginLeft: '50px' }} // Prevent capitalization
             startIcon={
               <img src="/assets/back.png" alt="Drafts Icon" style={{ width: '7.9px', height: '14.14px' }} />
             }
@@ -59,7 +59,7 @@ function Main() {
            <div style={{ display: 'flex', alignItems: 'center' }}>
             
             <Button 
-            style={{ color: '#FFFFFF', fontSize: '0.8rem', textTransform: 'none' }}
+            style={{ color: '#FFFFFF', fontSize: '14px', textTransform: 'none' }}
   variant="contained" 
   color="secondary" 
   sx={{ 
@@ -96,22 +96,40 @@ function Main() {
         }}  // Make sure the image fits within the box
         />
       </Box>
-      <Typography variant="h3" style={{ font:'PolySans Trial',color:'white',flexGrow: 1, textAlign: 'center', marginBottom: '10px' }}>Peggy Life Story</Typography>
-    <Typography variant="h6" style={{ color:'#B3BED4',flexGrow: 1, textAlign: 'center' }}>Created March 2011</Typography>
+      <Typography variant="h3" style={{ font:'PolySans Trial',fontSize:"55px",color:'white',flexGrow: 1, textAlign: 'center', marginBottom: '10px' }}>Peggy Life Story</Typography>
+    <Typography variant="h6" style={{ color:'#B3BED4',fontSize:'16px',flexGrow: 1, textAlign: 'center' }}>Created March 2011</Typography>
     <Box 
       sx={{ 
+        height:'36',
+        width:'36',
         display: 'flex', 
         justifyContent: 'center', 
         alignItems: 'center', 
         padding: '24px', // Optional padding
       }}
     >
-      <AvatarGroup max={4}>
-        <Avatar alt="Collaborator 1" src="/assets/Ellipse 51.png" />
-        <Avatar alt="Collaborator 2" src="/assets/Ellipse 52.png" />
-        <Avatar alt="Collaborator 3" src="/assets/Ellipse 56.png" />
-        <Avatar alt="Collaborator 4" src="/assets/Ellipse 54.png" /> {/* More avatars if needed */}
-      </AvatarGroup>
+       <AvatarGroup max={4}>
+    <Avatar 
+      alt="Collaborator 1" 
+      src="/assets/Ellipse 51.png" 
+      sx={{ width: 36, height: 36 }} 
+    />
+    <Avatar 
+      alt="Collaborator 2" 
+      src="/assets/Ellipse 52.png" 
+      sx={{ width: 36, height: 36 }} 
+    />
+    <Avatar 
+      alt="Collaborator 3" 
+      src="/assets/Ellipse 56.png" 
+      sx={{ width: 36, height: 36 }} 
+    />
+    <Avatar 
+      alt="Collaborator 4" 
+      src="/assets/Ellipse 54.png" 
+      sx={{ width: 36, height: 36 }} 
+    />
+  </AvatarGroup>
     </Box>
   <Box 
       sx={{ 

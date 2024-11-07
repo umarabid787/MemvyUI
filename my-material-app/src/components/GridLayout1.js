@@ -4,6 +4,8 @@ import Masonry from '@mui/lab/Masonry';
 import { format } from 'date-fns';
 import { Link } from '@mui/material';
 import { IconButton } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
 
 const mediaItems = [
   { 
@@ -166,35 +168,81 @@ const GridLayout1 = () => {
       {/* Search and Filter Controls */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2, flexDirection: { xs: 'column', sm: 'row' } }}>
   {/* Search Field (Left) */}
-  <TextField
-    variant="outlined"
-    placeholder="Search..."
-    size="small"
-    sx={{
-      width: { xs: '100%', sm: '200px' }, // Full width on small screens
-      '& .MuiOutlinedInput-root': {
-        color: 'white',
-        borderRadius: '20px',
-        '& fieldset': {
-          borderColor: '#1A205A',
-        },
-        '&:hover fieldset': {
-          borderColor: '#1A205A',
-        },
-        '&.Mui-focused fieldset': {
-          borderColor: '#1A205A',
-        },
+  {/* <TextField
+  variant="outlined"
+  placeholder="Search..."
+  size="small"
+  sx={{
+    width: { xs: '100%', sm: '200px' }, // Full width on small screens
+    '& .MuiOutlinedInput-root': {
+      backgroundColor: '#1A205A', // Set background color for the entire input area
+      color: 'white',
+      borderRadius: '20px',
+      '& fieldset': {
+        borderColor: '#1A205A', // Make sure border color matches background
       },
-      '& input': {
-        color: 'white',
-        padding: '10px 20px',
+      '&:hover fieldset': {
+        borderColor: '#1A205A', // Border color on hover
       },
-      '& .MuiInputBase-input': {
-        backgroundColor: '#1A205A',
-        borderRadius: '20px',
+      '&.Mui-focused fieldset': {
+        borderColor: '#1A205A', // Border color when focused
       },
-    }}
-  />
+    },
+    '& input': {
+      color: 'white', // Set text color to white
+      padding: '10px 15px', // Adjust padding to reduce space
+    },
+    '& .MuiInputAdornment-root': {
+      backgroundColor: '#1A205A', // Background color for the icon area
+      marginRight: '4px', // Reduce space between the icon and the input text
+    },
+  }}
+  InputProps={{
+    startAdornment: (
+      <InputAdornment position="start">
+        <SearchIcon sx={{ color: '#B3BED4' }} />
+      </InputAdornment>
+    ),
+  }}
+/> */}
+<TextField
+  variant="outlined"
+  placeholder="Search"
+  size="small"
+  sx={{
+    width: '150px', // Reduced width (adjust this as needed)
+    '& .MuiOutlinedInput-root': {
+      backgroundColor: '#1A205A', // Set background color for the entire input area
+      color: 'white',
+      borderRadius: '30px',
+      '& fieldset': {
+        borderColor: '#1A205A', // Border color matches the background
+      },
+      '&:hover fieldset': {
+        borderColor: '#1A205A', // Border color on hover
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#1A205A', // Border color when focused
+      },
+    },
+    '& input': {
+      color: 'white', // Set text color to white
+      padding: '10px 15px', // Adjust padding to make the input more compact
+      fontSize: '0.9rem', // Set a smaller font size
+    },
+    '& .MuiInputAdornment-root': {
+      backgroundColor: '#1A205A', // Background color for the icon area
+      marginRight: '4px', // Reduce space between the icon and input text
+    },
+  }}
+  InputProps={{
+    startAdornment: (
+      <InputAdornment position="start">
+        <SearchIcon sx={{ color: '#B3BED4' }} />
+      </InputAdornment>
+    ),
+  }}
+/>
 
   {/* Filter Buttons (Center) */}
   <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1, flexWrap: { xs: 'wrap', sm: 'nowrap' } }}>

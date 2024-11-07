@@ -48,7 +48,7 @@ function Header() {
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Button
-              style={{ color: '#B3BED4', fontSize: '0.8rem', textTransform: 'none' }}
+              style={{ color: '#B3BED4', fontSize: '14px', textTransform: 'none' }}
               startIcon={
                 <img src="/assets/Union.png" alt="Home Icon" style={{ width: '48.63px', height: '24px' }} />
               }
@@ -58,7 +58,7 @@ function Header() {
             </Button>
             
             <Button
-              style={{ color: '#B3BED4', fontSize: '0.8rem', textTransform: 'none' }}
+              style={{ color: '#B3BED4', fontSize: '14px', textTransform: 'none' }}
               startIcon={
                 <img src="/assets/Shape.png" alt="Drafts Icon" style={{ width: '16px', height: '16px' }} />
               }
@@ -68,7 +68,7 @@ function Header() {
             </Button>
             
             <Button
-              style={{ color: '#B3BED4', fontSize: '0.8rem', textTransform: 'none' }}
+              style={{ color: '#B3BED4', fontSize: '14px', textTransform: 'none' }}
               startIcon={
                 <img src="/assets/Shape (1).png" alt="Collaboration Icon" style={{ width: '16px', height: '16px' }} />
               }
