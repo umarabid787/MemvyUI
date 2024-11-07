@@ -6,6 +6,7 @@ import { Link } from '@mui/material';
 import { IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+import MediaModal from './MediaModal';
 
 const mediaItems = [
   { 
@@ -134,11 +135,22 @@ const mediaItems = [
 
 const GridLayout1 = () => {
   const [filter, setFilter] = useState('All'); // State to track the selected filter
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedMedia, setSelectedMedia] = useState(null);
   
   // Function to handle filter button click
   const handleClick = (filterType) => {
     console.log(`Selected Filter: ${filterType}`); // Debugging the selected filter
     setFilter(filterType);
+  };
+  const handleOpenModal = (item) => {
+    setSelectedMedia(item);
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setSelectedMedia(null);
   };
 
   // Filter media items based on the selected filter
@@ -289,7 +301,7 @@ const GridLayout1 = () => {
 />
 
       {/* Media Grid */}
-      <Masonry columns={{ xs: 2, sm: 3, md: 4 }} spacing={2}>
+     <Masonry columns={{ xs: 2, sm: 3, md: 4 }} spacing={2}>
         {filteredMediaItems.map((item, index) => (
           <Paper
             key={index}
@@ -301,7 +313,9 @@ const GridLayout1 = () => {
               display: 'flex',
               flexDirection: 'column',
               border: '1px solid rgba(255, 255, 255, 0.2)',
+              cursor: 'pointer', // Add cursor style to indicate clickability
             }}
+            onClick={() => handleOpenModal(item)} // Open modal on item click
           >
             {/* Card Header */}
             <Box
@@ -318,42 +332,38 @@ const GridLayout1 = () => {
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Box sx={{ mr: 1 }}>{getIcon(item.type)}</Box>
                 <Box>
-                 <Typography
-  variant="body2"
-  sx={{
-    fontFamily: 'PolySans Trial, sans-serif',
-    fontSize: '16px',
-    fontWeight: 400,
-    lineHeight: '19.2px',
-    textAlign: 'left',
-  }}
->
-  {item.username}
-</Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontFamily: 'PolySans Trial, sans-serif',
+                      fontSize: '16px',
+                      fontWeight: 400,
+                      lineHeight: '19.2px',
+                      textAlign: 'left',
+                    }}
+                  >
+                    {item.username}
+                  </Typography>
 
-
-<Typography
-  variant="caption"
-  sx={{
-    fontFamily: 'PolySans Trial,san-serif',
-    fontSize: '12px',
-    fontWeight: 400,
-    lineHeight: '14.4px',
-    textAlign: 'left',
-  }}
->
-  {/* {format(new Date(item.date), 'MMM dd, yyyy')} */}
-</Typography>
-
-                  <Typography variant="caption">{format(new Date(item.date), 'MMM dd, yyyy')}</Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      fontFamily: 'PolySans Trial, sans-serif',
+                      fontSize: '12px',
+                      fontWeight: 400,
+                      lineHeight: '14.4px',
+                      textAlign: 'left',
+                    }}
+                  >
+                    {format(new Date(item.date), 'MMM dd, yyyy')}
+                  </Typography>
                 </Box>
               </Box>
 
               {/* User Avatar */}
-              {/* <Avatar src={item.userImage} alt={item.username} sx={{ width: 32, height: 32 }} /> */}
-               <Link href={`/user/${encodeURIComponent(item.username.props.children)}`} underline="none">
-    <Avatar src={item.userImage} alt={item.username.props.children} sx={{ width: 32, height: 32 }} />
-  </Link>
+              <Link href={`/user/${encodeURIComponent(item.username)}`} underline="none">
+                <Avatar src={item.userImage} alt={item.username} sx={{ width: 32, height: 32 }} />
+              </Link>
             </Box>
 
             {/* Media Content */}
@@ -371,48 +381,49 @@ const GridLayout1 = () => {
                   Your browser does not support the audio element.
                 </audio>
               )}
-              {/* {item.type === 'text' && <Typography>{item.content}</Typography>} */}
               {item.type === 'text' && (
-  <Box
-    sx={{
-      maxHeight: '264px',
-      width: '250px', // Set a max height for the text container
-      overflow: 'hidden',
-      position: 'relative',
-      '&:after': {
-        content: '""',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: '20px', // Height of the blur effect
-        background: 'linear-gradient(to bottom, rgba(43, 54, 114, 0), #2B3672)', // Adjust gradient and color to match your theme
-      },
-    }}
-  >
-    <Typography
-      variant="body2"
-      color="white"
-      sx={{
-        fontFamily: 'PolySans Trial, sans-serif', // Apply PolySans Trial font
-        fontSize: '12px',
-        fontWeight: 400,
-        lineHeight: '14.4px',
-        textAlign: 'left',
-        whiteSpace: 'pre-line', // Preserve line breaks in the text
-      }}
-    >
-      {item.content}
-    </Typography>
-  </Box>
-)}
-
+                <Box
+                  sx={{
+                    maxHeight: '264px',
+                    width: '250px',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    '&:after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: '20px',
+                      background: 'linear-gradient(to bottom, rgba(43, 54, 114, 0), #2B3672)',
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="body2"
+                    color="white"
+                    sx={{
+                      fontFamily: 'PolySans Trial, sans-serif',
+                      fontSize: '12px',
+                      fontWeight: 400,
+                      lineHeight: '14.4px',
+                      textAlign: 'left',
+                      whiteSpace: 'pre-line',
+                    }}
+                  >
+                    {item.content}
+                  </Typography>
+                </Box>
+              )}
             </Box>
 
             <Divider sx={{ backgroundColor: '#3A4975' }} />
           </Paper>
         ))}
       </Masonry>
+
+      {/* Modal for media item details */}
+      <MediaModal open={openModal} onClose={handleCloseModal} mediaItem={selectedMedia} />
     </Box>
   );
 };

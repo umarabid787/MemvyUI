@@ -1,118 +1,229 @@
-import React from 'react';
-import { Box, Paper, Typography, Avatar } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Paper, Typography, Avatar, Button, TextField, Divider } from '@mui/material';
 import Masonry from '@mui/lab/Masonry';
 import { format } from 'date-fns';
+import { Link } from '@mui/material';
+import { IconButton } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
 
 const mediaItems = [
   { 
     type: 'image', 
     src: '/assets/95ed528db41e7c00e1ed7fcb7f31e1cc.png', 
     alt: 'Random Image 1', 
-    username: 'user1', 
+    username:  (
+      <Link href={`/user/${encodeURIComponent('Marek Novak')}`} color="white" underline="hover">
+      Marek Novak
+      </Link>
+    ), 
     date: '2024-11-01',
-    userImage: '/assets/Ellipse 63.png' // User image for user1
+    userImage: '/assets/Ellipse 63.png'
   },
+  
   { 
     type: 'audio', 
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 
     alt: 'Sample Audio', 
-    username: 'user5', 
+    username: 
+    (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+     Johansson Daniela 
+      </Link>
+    ), 
     date: '2024-11-05',
-    userImage: '/assets/Ellipse 51.png' // User image for user5
+    userImage: '/assets/Ellipse 51.png'
   },
   { 
     type: 'video', 
     src: 'https://www.w3schools.com/html/mov_bbb.mp4', 
     alt: 'Sample Video', 
-    username: 'user2', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+    Daniela 
+      </Link>
+    ), 
     date: '2024-11-02',
-    userImage: '/assets/Ellipse 52.png' // User image for user2
+    userImage: '/assets/Ellipse 52.png'
   },
   { 
     type: 'text', 
-    content: 'This is a sample text content.', 
-    username: 'user12', 
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a pellentesque massa. Nam eu tincidunt ipsum. Vivamus malesuada risus nec odio bibendum finibus. Etiam a metus nec ligula lobortis facilisis. Cras dui arcu, porta eget finibus vitae, laoreet id sem. Vivamus lectus orci, tincidunt id magna in, elementum mollis ipsum. Integer eu euismod leo. Aenean elementum quis ligula non consequat. Duis eu justo eget dolor hendrerit vulputate sed eget mauris. Proin congue, magna quis sodales venenatis, orci leo scelerisque velit, in ullamcorper nulla sapien non augue. Morbi dapibus eget mi sit amet consectetur. Phasellus consectetur faucibus quam in ullamcorper. Nullam in risus non lectus convallis eleifend. Donec ac sapien mauris. Nunc sagittis porta urna, vel pretium metus dignissim vel. Fusce eu ',
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+    Daniela Rossi
+      </Link>
+    ),  
     date: '2024-11-12',
-    userImage: '/assets/Ellipse 54.png' // User image for user12
-  }, // New text item
+    userImage: '/assets/Ellipse 54.png'
+  },
   { 
     type: 'image', 
     src: '/assets/1.jpeg', 
     alt: 'Random Image 1', 
-    username: 'user3', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+    Marek Novak
+      </Link>
+    ), 
     date: '2024-11-03',
-    userImage: '/assets/Ellipse 61.png' // User image for user3
+    userImage: '/assets/Ellipse 61.png'
   },
   { 
     type: 'image', 
     src: '/assets/download (18).jpeg', 
     alt: 'Random Image 3', 
-    username: 'user4', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+     Johansson  Svensson
+      </Link>
+    ),  
     date: '2024-11-04',
-    userImage: '/assets/Ellipse 62.png' // User image for user4
+    userImage: '/assets/Ellipse 62.png'
   },
   { 
     type: 'audio', 
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 
     alt: 'Sample Audio', 
-    username: 'user5', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+    Emma  Svensson
+      </Link>
+    ),  
     date: '2024-11-05',
-    userImage: '/assets/Ellipse 63.png' // User image for user5
+    userImage: '/assets/Ellipse 63.png'
   },
   { 
     type: 'video', 
     src: 'https://www.w3schools.com/html/mov_bbb.mp4', 
     alt: 'Sample Video 2', 
-    username: 'user6', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+     Svensson 
+      </Link>
+    ),  
     date: '2024-11-06',
-    userImage: '/assets/Ellipse 70.png' // User image for user6
+    userImage: '/assets/Ellipse 70.png'
   },
   { 
     type: 'image', 
-    src: '/assets/download (17).jpeg', 
+    src: '/assets/Rectangle 158.png', 
     alt: 'Random Image 2', 
-    username: 'user7', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+    Johan Svensson
+      </Link>
+    ), 
     date: '2024-11-07',
-    userImage: '/assets/Ellipse 52.png' // User image for user7
+    userImage: '/assets/Ellipse 52.png'
   },
   { 
     type: 'image', 
     src: '/assets/download (18).jpeg', 
     alt: 'Random Image 3', 
-    username: 'user8', 
+    username: (
+      <Link href={`/user/${encodeURIComponent('Emma Johansson')}`} color="white" underline="hover">
+   Elena Petrova
+      </Link>
+    ),  
     date: '2024-11-08',
-    userImage: '/assets/Ellipse 54.png' // User image for user8
+    userImage: '/assets/Ellipse 54.png'
   },
 ];
 
-const getIcon = (type) => {
-  switch (type) {
-    case 'image':
-      return <img src="/assets/image_icon.png" alt="Image Icon" style={{ width: '24px', height: '24px' }} />;
-    case 'video':
-      return <img src="/assets/video_icon.png" alt="Video Icon" style={{ width: '24px', height: '24px' }} />;
-    case 'audio':
-      return <img src="/assets/audio_icon.png" alt="Audio Icon" style={{ width: '19.71px', height: '24px' }} />;
-    case 'text':
-      return <img src="/assets/text_icon.png" alt="Text Icon" style={{ width: '32px', height: '24px' }} />;
-    default:
-      return null;
-  }
-};
-
 const GridLayout = () => {
+  const [filter, setFilter] = useState('All');
+
+  const handleClick = (filterType) => {
+    setFilter(filterType);
+  };
+
+  const filteredMediaItems = mediaItems.filter((item) => {
+    if (filter === 'All') return true;
+    return item.type === filter.toLowerCase();
+  });
+
+  const getIcon = (type) => {
+    switch (type) {
+      case 'image':
+        return <img src="/assets/image_icon.png" alt="Image Icon" style={{ width: '24px', height: '24px' }} />;
+      case 'video':
+        return <img src="/assets/video_icon.png" alt="Video Icon" style={{ width: '24px', height: '24px' }} />;
+      case 'audio':
+        return <img src="/assets/audio_icon.png" alt="Audio Icon" style={{ width: '19.71px', height: '24px' }} />;
+      case 'text':
+        return <img src="/assets/text_icon.png" alt="Text Icon" style={{ width: '32px', height: '24px' }} />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <Box
-      sx={{
-        maxWidth: 1200,
-        margin: '0 auto',
-        padding: 2,
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
+    <Box sx={{ maxWidth: 1200, margin: '0 auto', padding: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2, flexDirection: { xs: 'column', sm: 'row' } }}>
+        <TextField
+          variant="outlined"
+          placeholder="Search"
+          size="small"
+          sx={{
+            width: '150px',
+            '& .MuiOutlinedInput-root': {
+              backgroundColor: '#1A205A',
+              color: 'white',
+              borderRadius: '30px',
+              '& fieldset': {
+                borderColor: '#1A205A',
+              },
+              '&:hover fieldset': {
+                borderColor: '#1A205A',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: '#1A205A',
+              },
+            },
+            '& input': {
+              color: 'white',
+              padding: '10px 15px',
+              fontSize: '0.9rem',
+            },
+            '& .MuiInputAdornment-root': {
+              backgroundColor: '#1A205A',
+              marginRight: '4px',
+            },
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon sx={{ color: '#B3BED4' }} />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1, flexWrap: { xs: 'wrap', sm: 'nowrap' } }}>
+          {['All', 'Image', 'Video', 'Audio', 'Text'].map((label) => (
+            <Button
+              key={label}
+              variant="contained"
+              onClick={() => handleClick(label)}
+              sx={{
+                textTransform: 'none',
+                backgroundColor: filter === label ? 'white' : '#2B3672',
+                color: filter === label ? 'black' : 'white',
+                borderRadius: '20px',
+                margin: '8px',
+                '&:hover': {
+                  backgroundColor: filter === label ? 'white' : '#2B3672',
+                  color: filter === label ? 'black' : 'white',
+                },
+              }}
+            >
+              {label}
+            </Button>
+          ))}
+        </Box>
+      </Box>
       <Masonry columns={{ xs: 2, sm: 3, md: 4 }} spacing={2}>
-        {mediaItems.map((item, index) => (
+        {filteredMediaItems.map((item, index) => (
           <Paper
             key={index}
             sx={{
@@ -122,88 +233,33 @@ const GridLayout = () => {
               color: 'white',
               display: 'flex',
               flexDirection: 'column',
-              border: '1px solid rgba(255, 255, 255, 0.2)', // Light white border
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              cursor: 'pointer',
             }}
           >
-            {/* Card Header: Icon, Name, Date on Left; User Avatar on Right */}
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '8px 16px',
-                backgroundColor: '#2B3672',
-                color: 'white',
-              }}
-            >
-              {/* Icon and Name, Date */}
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Box sx={{ mr: 1, color: 'white' }}>{getIcon(item.type)}</Box>
-                <Box>
-                  <Typography variant="body2">{item.username}</Typography>
-                  <Typography variant="caption">
-                    {format(new Date(item.date), 'MMM d, yyyy')}
-                  </Typography>
-                </Box>
-              </Box>
-              {/* User Icon/Avatar */}
-              <Avatar 
-                src={item.userImage} // Use user image from mediaItems
-                alt={item.username}
-                sx={{ width: 30, height: 30 }} 
-              >
-                {item.username[0].toUpperCase()} {/* Fallback to initials if image is not available */}
-              </Avatar>
+            <Box sx={{ position: 'relative' }}>
+              <img
+                src={item.src}
+                alt={item.alt}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
             </Box>
-
-            {/* Media Content in Card */}
-            <Box
-              sx={{
-                padding: 1,
-                borderRadius: '0 0 8px 8px',
-                backgroundColor: '#2B3672',
-                color: 'white', // Ensure text within media content is white
-              }}
-            >
-              {item.type === 'image' && (
-                <Box
-                  component="img"
-                  src={item.src}
-                  alt={item.alt}
-                  sx={{
-                    width: '100%',
-                    height: Math.random() * 200 + 150,
-                    objectFit: 'cover',
-                  }}
-                />
-              )}
-              {item.type === 'video' && (
-                <Box
-                  component="video"
-                  controls
-                  sx={{
-                    width: '100%',
-                    height: Math.random() * 200 + 150,
-                    objectFit: 'cover',
-                  }}
-                >
-                  <source src={item.src} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </Box>
-              )}
-              {item.type === 'audio' && (
-                <Box sx={{ textAlign: 'center' }}>
-                  <audio controls style={{ width: '100%' }}>
-                    <source src={item.src} type="audio/mpeg" />
-                    Your browser does not support the audio tag.
-                  </audio>
-                </Box>
-              )}
-              {item.type === 'text' && (
-                <Typography variant="body2" sx={{ padding: 1, color: 'white' }}>
-                  {item.content}
+            <Box sx={{ padding: 2 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Avatar alt="user" src={item.userImage} sx={{ width: 24, height: 24, marginRight: 1 }} />
+                <Typography variant="body2" sx={{ color: 'white' }}>
+                  {item.username}
                 </Typography>
-              )}
+              </Box>
+              <Typography variant="body2" sx={{ color: '#B3BED4', fontSize: '0.9rem', mt: 1 }}>
+                {format(new Date(item.date), 'MMM dd, yyyy')}
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 1 }}>
+                {getIcon(item.type)}
+                <Typography variant="body2" sx={{ marginLeft: 1, color: 'white' }}>
+                  {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+                </Typography>
+              </Box>
             </Box>
           </Paper>
         ))}
