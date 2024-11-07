@@ -22,7 +22,6 @@ const theme = createTheme({
   },
   shadows: Array(25).fill('none'), // Sets all shadows to 'none'
 });
-
 function Main() {
      const handleClick = () => {
     alert('Button is clicked');
